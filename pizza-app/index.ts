@@ -1,3 +1,9 @@
+type Pizza = {
+    name: string,
+    price: number
+}
+
+
 const menu = [
     { name: "Margherita", price: 8 },
     { name: "Pepperoni", price: 10 },
@@ -9,11 +15,11 @@ const cashInRegister = 100;
 const nextOrderId = 1;
 const orderQueue = [];
 
-function addNewPizza(pizzaObject) {
+function addNewPizza(pizzaObject: Pizza) {
     menu.push(pizzaObject);
 }
 
-function placeOrder(pizzaName) {
+function placeOrder(pizzaName: string) {
     const SelectedPizza = menu.find((pizzaObj) => pizzaObj.name === pizzaName);
     if (!SelectedPizza) {
         console.error(`${pizzaName} does not exist in the menu`);
