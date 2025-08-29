@@ -15,6 +15,10 @@ function addNewPizza(pizzaObject) {
 
 function placeOrder(pizzaName) {
     const SelectedPizza = menu.find((pizzaObj) => pizzaObj.name === pizzaName);
+    if (!SelectedPizza) {
+        console.error(`${pizzaName} does not exist in the menu`);
+        return;
+    }
     cashInRegister += SelectedPizza.price;
     const newOrder = {
         id: nextOrderId++,
