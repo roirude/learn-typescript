@@ -12,3 +12,7 @@ const orderQueue = []
  * Challenge: Add a utility function "addNewPizza" that takes a pizza object
  * and adds it to the menu.
  */
+
+function addNewPizza(pizzaObject) {
+    menu.push(pizzaObject)
+}
