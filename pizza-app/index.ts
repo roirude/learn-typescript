@@ -1,15 +1,15 @@
 type Pizza = {
-    name: string,
-    price: number
-}
+    name: string;
+    price: number;
+};
 
 type Order = {
-    id: number,
-    pizza: Pizza,
-    status: string
-}
+    id: number;
+    pizza: Pizza;
+    status: string;
+};
 
-const menu = [
+const menu: Pizza[] = [
     { name: "Margherita", price: 8 },
     { name: "Pepperoni", price: 10 },
     { name: "Hawaiian", price: 10 },
@@ -18,7 +18,7 @@ const menu = [
 
 let cashInRegister = 100;
 let nextOrderId = 1;
-const orderQueue = [];
+const orderQueue: Array<Order> = [];
 
 function addNewPizza(pizzaObject: Pizza) {
     menu.push(pizzaObject);
@@ -43,7 +43,7 @@ function placeOrder(pizzaName: string) {
 
 function completeOrder(orderId: number) {
     const order = orderQueue.find((orderObj: Order) => orderObj.id === orderId);
-    order.status = "completed";
+    order && (order.status = "completed");
 
     return order;
 }
