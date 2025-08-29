@@ -3,6 +3,11 @@ type Pizza = {
     price: number
 }
 
+type Order = {
+    id: number,
+    pizza: Pizza,
+    status: string
+}
 
 const menu = [
     { name: "Margherita", price: 8 },
@@ -37,7 +42,7 @@ function placeOrder(pizzaName: string) {
 }
 
 function completeOrder(orderId: number) {
-    const order = orderQueue.find((orderObj) => orderObj.id === orderId);
+    const order = orderQueue.find((orderObj: Order) => orderObj.id === orderId);
     order.status = "completed";
 
     return order;
