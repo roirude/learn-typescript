@@ -25,7 +25,7 @@ function addNewPizza(pizzaObject: Pizza): void {
     menu.push(pizzaObject);
 }
 
-function placeOrder(pizzaName: string) {
+function placeOrder(pizzaName: string): Order | undefined {
     const SelectedPizza = menu.find((pizzaObj) => pizzaObj.name === pizzaName);
     if (!SelectedPizza) {
         console.error(`${pizzaName} does not exist in the menu`);
@@ -42,7 +42,7 @@ function placeOrder(pizzaName: string) {
     return newOrder;
 }
 
-function completeOrder(orderId: number) {
+function completeOrder(orderId: number): Order | undefined {
     const order = orderQueue.find((orderObj: Order) => orderObj.id === orderId);
     if (!order) {
         console.error(`${orderId} was not found in the order queue.`);
@@ -53,7 +53,7 @@ function completeOrder(orderId: number) {
     return order;
 }
 
-function getPizzaDetail(identifier: number | string) {
+function getPizzaDetail(identifier: number | string): Pizza | undefined {
     if (typeof identifier === "string") {
         return menu.find((pizza) => pizza.name.toLowerCase() === identifier.toLowerCase());
     } else if (typeof identifier === "number") {
