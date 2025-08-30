@@ -1,5 +1,5 @@
 type Pizza = {
-    id: number;
+    id?: number;
     name: string;
     price: number;
 };
@@ -24,8 +24,8 @@ let nextOrderId = 1;
 const orderQueue: Array<Order> = [];
 
 export function addNewPizza(pizzaObject: Pizza): void {
+    pizzaObject.id = pizzaId++
     menu.push(pizzaObject);
-    menu.map((pizza) => ({ ...pizza, id: pizzaId++ }));
 }
 
 function placeOrder(pizzaName: string): Order | undefined {
@@ -70,9 +70,9 @@ function getPizzaDetail(identifier: number | string): Pizza | undefined {
     }
 }
 
-addNewPizza({ id: pizzaId++, name: "Chicken Bacon Ranch", price: 12 });
-addNewPizza({ id: pizzaId++, name: "BBQ Chicken", price: 12 });
-addNewPizza({ id: pizzaId++, name: "Spicy Sausage", price: 11 });
+addNewPizza({ name: "Chicken Bacon Ranch", price: 12 });
+addNewPizza({ name: "BBQ Chicken", price: 12 });
+addNewPizza({ name: "Spicy Sausage", price: 11 });
 
 placeOrder("Chicken Bacon Ranch");
 completeOrder(1);
