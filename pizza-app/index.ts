@@ -1,5 +1,5 @@
 type Pizza = {
-    id?: number;
+    id: number;
     name: string;
     price: number;
 };
@@ -23,9 +23,13 @@ let cashInRegister = 100;
 let nextOrderId = 1;
 const orderQueue: Array<Order> = [];
 
-export function addNewPizza(pizzaObject: Pizza): void {
-    pizzaObject.id = pizzaId++
-    menu.push(pizzaObject);
+export function addNewPizza(pizzaObject: Omit<Pizza, "id">): Pizza {
+    const newPizza: Pizza = {
+        id: pizzaId++,
+        ...pizzaObject,
+    };
+    menu.push(newPizza);
+    return newPizza;
 }
 
 function placeOrder(pizzaName: string): Order | undefined {
