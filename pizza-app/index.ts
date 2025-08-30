@@ -56,8 +56,10 @@ function completeOrder(orderId: number) {
 function getPizzaDetail(identifier: number | string) {
     if (typeof identifier === "string") {
         return menu.find((pizza) => pizza.name.toLowerCase() === identifier.toLowerCase());
-    } else {
+    } else if (typeof identifier === "number") {
         return menu.find((pizza) => pizza.id === identifier);
+    } else {
+        throw  new TypeError("Parameter `Identfier` must be either a string or a number")
     }
 }
 
