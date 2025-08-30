@@ -53,6 +53,14 @@ function completeOrder(orderId: number) {
     return order;
 }
 
+function getPizzaDetail(identifier: number | string) {
+    if (typeof identifier === "string") {
+        return menu.find((pizza) => pizza.name.toLowerCase() === identifier.toLowerCase());
+    } else {
+        return menu.find((pizza) => pizza.id === identifier);
+    }
+}
+
 addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 });
 addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 });
 addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 });
