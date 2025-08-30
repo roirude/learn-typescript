@@ -10,19 +10,22 @@ type Order = {
     status: "ordered" | "completed";
 };
 
+let pizzaId: number = 1;
+
 const menu: Pizza[] = [
-    { id: 1, name: "Margherita", price: 8 },
-    { id: 2, name: "Pepperoni", price: 10 },
-    { id: 3, name: "Hawaiian", price: 10 },
-    { id: 4, name: "Veggie", price: 9 },
+    { id: pizzaId++, name: "Margherita", price: 8 },
+    { id: pizzaId++, name: "Pepperoni", price: 10 },
+    { id: pizzaId++, name: "Hawaiian", price: 10 },
+    { id: pizzaId++, name: "Veggie", price: 9 },
 ];
 
 let cashInRegister = 100;
 let nextOrderId = 1;
 const orderQueue: Array<Order> = [];
 
-function addNewPizza(pizzaObject: Pizza): void {
+export function addNewPizza(pizzaObject: Pizza): void {
     menu.push(pizzaObject);
+    menu.map((pizza) => ({ ...pizza, id: pizzaId++ }));
 }
 
 function placeOrder(pizzaName: string): Order | undefined {
@@ -55,17 +58,21 @@ function completeOrder(orderId: number): Order | undefined {
 
 function getPizzaDetail(identifier: number | string): Pizza | undefined {
     if (typeof identifier === "string") {
-        return menu.find((pizza) => pizza.name.toLowerCase() === identifier.toLowerCase());
+        return menu.find(
+            (pizza) => pizza.name.toLowerCase() === identifier.toLowerCase()
+        );
     } else if (typeof identifier === "number") {
         return menu.find((pizza) => pizza.id === identifier);
     } else {
-        throw  new TypeError("Parameter `Identfier` must be either a string or a number")
+        throw new TypeError(
+            "Parameter `Identfier` must be either a string or a number"
+        );
     }
 }
 
-addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 });
-addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 });
-addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 });
+addNewPizza({ id: pizzaId++, name: "Chicken Bacon Ranch", price: 12 });
+addNewPizza({ id: pizzaId++, name: "BBQ Chicken", price: 12 });
+addNewPizza({ id: pizzaId++, name: "Spicy Sausage", price: 11 });
 
 placeOrder("Chicken Bacon Ranch");
 completeOrder(1);
