@@ -21,7 +21,7 @@ let cashInRegister = 100;
 let nextOrderId = 1;
 const orderQueue: Array<Order> = [];
 
-function addNewPizza(pizzaObject: Pizza) {
+function addNewPizza(pizzaObject: Pizza): void {
     menu.push(pizzaObject);
 }
 
