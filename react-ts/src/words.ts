@@ -1,4 +1,4 @@
-export const words: Array<string> = [
+export const words: string[] = [
   "about",
   "account",
   "across",
