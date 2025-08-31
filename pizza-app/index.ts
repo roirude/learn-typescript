@@ -49,19 +49,13 @@ function placeOrder(pizzaName: string): Order | undefined {
     return newOrder;
 }
 
-/**
- * Challenge: add types our generic `addToArray` function. It should work
- * for adding new pizzas to the `menu` and adding new orders to the `orderQueue`
- */
 
 function addToArray<T>(array: T[], item: T) {
     array.push(item);
     return array;
 }
-
-// example usage:
-addToArray(menu, { id: pizzaId++, name: "Chicken Bacon Ranch", price: 12 });
-addToArray(orderQueue, {
+addToArray<Pizza>(menu, { id: pizzaId++, name: "Chicken Bacon Ranch", price: 12 });
+addToArray<Order>(orderQueue, {
     id: nextOrderId++,
     pizza: menu[2],
     status: "completed",
