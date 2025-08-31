@@ -1,12 +1,11 @@
 import { words } from "./words"
-import type { Language } from "./languages";
 
 export function getRandomWord(): string {
     const randomIndex: number = Math.floor(Math.random() * words.length)
     return words[randomIndex]
 }
 
-export function getFarewellText(language: Language): string {
+export function getFarewellText(language: string): string {
     const options: string[] = [
         `Farewell, ${language}`,
         `Adios, ${language}`,
