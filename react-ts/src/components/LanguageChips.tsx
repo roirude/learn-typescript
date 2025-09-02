@@ -1,7 +1,12 @@
 import { clsx } from "clsx"
+import type { JSX } from "react"
+import type { Language } from "../languages"
 
-export default function LanguageChips({ languages, wrongGuessCount }) {
-    const languageElements = languages.map((lang, index) => {
+export default function LanguageChips({ languages, wrongGuessCount }: {
+    languages: Language[],
+    wrongGuessCount: number
+}): JSX.Element {
+    const languageElements = languages.map((lang: Language, index: number): JSX.Element => {
         const isLanguageLost = index < wrongGuessCount
         const styles = {
             backgroundColor: lang.backgroundColor,
@@ -14,8 +19,8 @@ export default function LanguageChips({ languages, wrongGuessCount }) {
                 style={styles}
                 key={lang.name}
             >
-        {lang.name}
-      </span>
+                {lang.name}
+            </span>
         )
     })
 
