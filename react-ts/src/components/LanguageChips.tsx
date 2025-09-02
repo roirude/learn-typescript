@@ -6,7 +6,7 @@ export default function LanguageChips({ languages, wrongGuessCount }: {
     languages: Language[],
     wrongGuessCount: number
 }): JSX.Element {
-    const languageElements = languages.map((lang: Language, index: number): JSX.Element => {
+    const languageElements: JSX.Element[] = languages.map((lang: Language, index: number): JSX.Element => {
         const isLanguageLost: boolean = index < wrongGuessCount
         const styles: Omit<Language, "name"> = {
             backgroundColor: lang.backgroundColor,
